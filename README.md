@@ -1,6 +1,11 @@
-# Traktor ID Display
+# Traktor Track Display
 
 This is a tool to visualize what's being played in real time on Traktor.
+
+Currently it looks: ugly 💩
+But it works and I'm working to make it: beautiful ✨
+
+![Traktor Track Display Preview Image](./preview.png)
 
 ## Pre-requisites
 

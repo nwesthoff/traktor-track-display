@@ -45,14 +45,10 @@ export default function Deck({ socket, deckId }: Props): ReactElement {
 
   return (
     <div className={Styles.deck}>
-      {deck && (
+      {deck && deck.isPlaying && (
         <>
           <h2>Deck {deck.deck}</h2>
-          {deck.isPlaying && channel?.isOnAir ? (
-            <HiPlay size={48} />
-          ) : (
-            <HiPause size={48} />
-          )}
+          {channel?.isOnAir ? <HiPlay size={48} /> : <HiPause size={48} />}
           <h3>{deck.artist}</h3>
           <h3>{deck.title}</h3>
         </>
