@@ -32,3 +32,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# Proprietary Ace & Tate fonts
+/public/assets/fonts

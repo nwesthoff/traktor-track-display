@@ -1,17 +1,6 @@
 import Layout from "../components/Layout";
-import { useEffect, useState } from "react";
-import { ChannelInfo, DeckInfo } from "../types";
 import Deck from "../components/Deck/Index";
-import { Socket } from "socket.io-client";
-import { DefaultEventsMap } from "socket.io-client/build/typed-events";
 import { socket } from "../services/socket";
-
-const deckChannelMap = {
-  A: 1,
-  B: 2,
-  C: 3,
-  D: 4,
-};
 
 const IndexPage = () => {
   return (

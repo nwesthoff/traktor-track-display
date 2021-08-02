@@ -1,0 +1,9 @@
+.artistName {
+  font-family: Reckless, sans-serif;
+  --transition-enter-delay: 350ms;
+}
+
+.trackTitle {
+  --transition-enter-delay: 100ms;
+  --transition-exit-delay: 150ms;
+}

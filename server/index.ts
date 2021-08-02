@@ -3,7 +3,7 @@ import { Server } from "socket.io";
 import cors from "cors";
 
 const PORT = process.env.PORT || 8080;
-const verbose = false;
+const verbose = true;
 
 const app = express();
 app.use(cors());
