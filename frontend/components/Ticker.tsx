@@ -16,7 +16,7 @@ export default function Ticker({ history }: Props): ReactElement {
       {history?.length > 1 && (
         <div
           style={{
-            padding: ".8rem 0",
+            padding: ".4rem 0",
             paddingLeft: "5%",
             whiteSpace: "nowrap",
           }}
@@ -26,7 +26,7 @@ export default function Ticker({ history }: Props): ReactElement {
               display: "flex",
               flexBasis: 300,
               overflow: "hidden",
-              gap: "5.6rem",
+              gap: "2.6rem",
             }}
           >
             <h3>Previous: </h3>
@@ -38,7 +38,7 @@ export default function Ticker({ history }: Props): ReactElement {
                   style={{ opacity: 0.8 }}
                   key={track.artist + "-" + track.title}
                 >
-                  {track.title} - {track.artist}
+                  {track.artist} — {track.title}
                 </h3>
               ))}
           </div>

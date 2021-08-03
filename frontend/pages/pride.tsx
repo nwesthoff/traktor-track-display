@@ -1,19 +1,36 @@
 import Layout from "../components/Layout";
 import { socket } from "../services/socket";
-import { DeckInfo } from "../types";
+import { ChannelInfo, DeckInfo } from "../types";
 import { useState, useEffect } from "react";
 import Ticker from "../components/Ticker";
 import CurrentTrack from "../components/CurrentTrack";
 
+const deckChannelMap = {
+  1: "A",
+  2: "B",
+  3: "C",
+  4: "D",
+};
+
 const IndexPage = () => {
   const [history, setHistory] = useState<DeckInfo[]>([]);
+  const [playedHistory, setPlayedHistory] = useState<DeckInfo[]>([]);
 
   useEffect(() => {
     socket.on("deck", updateDeck);
+
     return () => {
-      socket.close();
+      socket.off("deck");
     };
   }, [socket]);
+
+  useEffect(() => {
+    socket.on("mix", updatePlayState);
+
+    return () => {
+      socket.off("mix");
+    };
+  }, [socket, history]);
 
   function updateDeck(msg: DeckInfo) {
     if (msg.filePath) {
@@ -21,15 +38,29 @@ const IndexPage = () => {
         return [...prevHistory, msg];
       });
     }
-    //  else {
-    //   setHistory((prevHistory) => {
-    //     const index = prevHistory.findIndex(
-    //       (needle) => needle.deck === msg.deck
-    //     );
-    //     prevHistory[index] = { ...prevHistory[index], ...msg };
-    //     return prevHistory;
-    //   });
-    // }
+  }
+
+  function updatePlayState(msg: ChannelInfo) {
+    const deck = deckChannelMap[msg.channel];
+
+    if (msg.isOnAir) {
+      const lastDeckTrack = history
+        .reverse()
+        .find((track) => track.deck === deck);
+
+      if (lastDeckTrack) {
+        setPlayedHistory((prevPlayHistory) => {
+          if (
+            prevPlayHistory?.length > 0 &&
+            prevPlayHistory.find((track) => track.title === lastDeckTrack.title)
+          ) {
+            return prevPlayHistory;
+          } else {
+            return [...prevPlayHistory, lastDeckTrack];
+          }
+        });
+      }
+    }
   }
 
   return (
@@ -59,9 +90,11 @@ const IndexPage = () => {
                 "linear-gradient(to top, rgba(0,0,0,.8), rgba(0,0,0,0))",
             }}
           >
-            <CurrentTrack currentTrack={history?.[history.length - 1]} />
+            <CurrentTrack
+              currentTrack={playedHistory?.[playedHistory.length - 1]}
+            />
           </div>
-          <Ticker history={history} />
+          <Ticker history={playedHistory} />
         </div>
       </div>
     </Layout>

@@ -18,7 +18,7 @@ export default function Rainbow({}: Props): ReactElement {
         <div
           key={color}
           style={{
-            height: "20px",
+            height: "15px",
             background: color,
             width: 100 / colors.length + "%",
             marginBottom: "1.2rem",

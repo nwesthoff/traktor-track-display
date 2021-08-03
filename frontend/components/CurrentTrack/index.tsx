@@ -10,7 +10,7 @@ interface Props {
 
 export default function CurrentTrack({ currentTrack }: Props): ReactElement {
   return (
-    <div style={{ padding: "1.2rem 0 3.2rem" }}>
+    <div style={{ padding: "1.2rem 0 2.6rem" }}>
       <Rainbow />
       {currentTrack && (
         <>

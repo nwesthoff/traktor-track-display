@@ -36,7 +36,6 @@ export default function Deck({ socket, deckId }: Props): ReactElement {
 
   function updateChannel(msg: ChannelInfo) {
     if (parseInt(msg.channel) === deckChannelMap[deckId]) {
-      console.log(msg);
       setChannel((prevState) => {
         return { ...prevState, ...msg };
       });
