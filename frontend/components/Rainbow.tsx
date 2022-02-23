@@ -29,7 +29,13 @@ class RainbowPiece {
   }
 }
 
-export default function Rainbow(): ReactElement {
+interface Props {
+  colors?: string[];
+}
+
+export default function Rainbow({
+  colors = ["#DB3938", "#EA9840", "#F6EF55", "#579752", "#375FAA", "#623174"],
+}: Props): ReactElement {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -48,13 +54,17 @@ export default function Rainbow(): ReactElement {
     window.requestAnimationFrame(draw);
 
     const rainbow = [
-      new RainbowPiece("#DB3938", 0, 0, false),
-      new RainbowPiece("#EA9840", 1, 10, false),
-      new RainbowPiece("#F6EF55", 2, 20, false),
-      new RainbowPiece("#579752", 3, 10, true),
-      new RainbowPiece("#375FAA", 4, 0, true),
-      new RainbowPiece("#623174", 5, 20, true),
+      new RainbowPiece(colors[0], 0, 0, false),
+      new RainbowPiece(colors[1], 1, 10, false),
+      new RainbowPiece(colors[2], 2, 20, false),
+      new RainbowPiece(colors[3], 3, 10, true),
+      new RainbowPiece(colors[4], 4, 0, true),
+      new RainbowPiece(colors[5], 5, 20, true),
     ];
+
+    if (colors.length !== 6) {
+      throw new Error("Rainbow needs 6 colors");
+    }
 
     function draw(now) {
       ctx.clearRect(0, 0, width, height);
@@ -71,6 +81,7 @@ export default function Rainbow(): ReactElement {
       window.requestAnimationFrame(draw);
     }
   }, []);
+
   return (
     <canvas
       style={{

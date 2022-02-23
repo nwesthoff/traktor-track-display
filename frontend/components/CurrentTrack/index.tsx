@@ -9,39 +9,37 @@ interface Props {
 }
 
 export default function CurrentTrack({ currentTrack }: Props): ReactElement {
+  if (!currentTrack) {
+    return null;
+  }
   return (
-    <div style={{ padding: "1.2rem 0 2.6rem" }}>
-      <Rainbow />
-      {currentTrack && (
-        <>
-          <div className={Styles.trackTitle}>
-            <SwitchTransition mode="out-in">
-              <CSSTransition<undefined>
-                key={currentTrack.title + currentTrack.artist}
-                addEndListener={(node: HTMLElement, done: () => void) => {
-                  node.addEventListener("transitionend", done, false);
-                }}
-                className="fade"
-              >
-                <h1 className="fade">{currentTrack.title}</h1>
-              </CSSTransition>
-            </SwitchTransition>
-          </div>
-          <div className={Styles.artistName}>
-            <SwitchTransition mode="out-in">
-              <CSSTransition<undefined>
-                key={currentTrack.title + currentTrack.artist}
-                addEndListener={(node: HTMLElement, done: () => void) => {
-                  node.addEventListener("transitionend", done, false);
-                }}
-                className="fade"
-              >
-                <h2 className="fade">{currentTrack.artist}</h2>
-              </CSSTransition>
-            </SwitchTransition>
-          </div>
-        </>
-      )}
-    </div>
+    <>
+      <div className={Styles.trackTitle}>
+        <SwitchTransition mode="out-in">
+          <CSSTransition<undefined>
+            key={currentTrack.title + currentTrack.artist}
+            addEndListener={(node: HTMLElement, done: () => void) => {
+              node.addEventListener("transitionend", done, false);
+            }}
+            className="fade"
+          >
+            <h1 className="fade">{currentTrack.title}</h1>
+          </CSSTransition>
+        </SwitchTransition>
+      </div>
+      <div className={Styles.artistName}>
+        <SwitchTransition mode="out-in">
+          <CSSTransition<undefined>
+            key={currentTrack.title + currentTrack.artist}
+            addEndListener={(node: HTMLElement, done: () => void) => {
+              node.addEventListener("transitionend", done, false);
+            }}
+            className="fade"
+          >
+            <h2 className="fade">{currentTrack.artist}</h2>
+          </CSSTransition>
+        </SwitchTransition>
+      </div>
+    </>
   );
 }

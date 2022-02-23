@@ -13,7 +13,7 @@ const deckChannelMap = {
   4: "D",
 };
 
-const IndexPage = () => {
+const BorrelPage = () => {
   const [history, setHistory] = useState<DeckInfo[]>([]);
   const [playedHistory, setPlayedHistory] = useState<DeckInfo[]>([]);
 
@@ -91,7 +91,16 @@ const IndexPage = () => {
                 "linear-gradient(to top, rgba(0,0,0,.8), rgba(0,0,0,0))",
             }}
           >
-            <Rainbow />
+            <Rainbow
+              colors={[
+                "#6f9af2",
+                "#1479b8",
+                "#1218c4",
+                "#aec5f2",
+                "#558bf6",
+                "#375FAA",
+              ]}
+            />
             <div style={{ padding: "1.2rem 0 2.6rem" }}>
               <CurrentTrack
                 currentTrack={playedHistory?.[playedHistory.length - 1]}
@@ -105,4 +114,4 @@ const IndexPage = () => {
   );
 };
 
-export default IndexPage;
+export default BorrelPage;
