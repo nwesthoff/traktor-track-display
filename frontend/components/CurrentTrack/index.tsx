@@ -1,6 +1,5 @@
 import React, { ReactElement } from "react";
 import { DeckInfo } from "../../types";
-import Rainbow from "../Rainbow";
 import Styles from "./styles.module.scss";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 

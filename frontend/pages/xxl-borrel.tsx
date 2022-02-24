@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import Ticker from "../components/Ticker";
 import CurrentTrack from "../components/CurrentTrack";
 import Rainbow from "../components/Rainbow";
+import Logo from "../components/Logo";
+import GradientLogo from "../components/GradientLogo";
 
 const deckChannelMap = {
   1: "A",
@@ -64,8 +66,14 @@ const BorrelPage = () => {
     }
   }
 
+  const prevTrack = history?.[history.length - 1];
+
   return (
-    <Layout title={"Playing: " + history?.[history.length - 1]?.title}>
+    <Layout
+      title={
+        prevTrack ? "▶️ Playing: " + prevTrack?.title : "📢 Ready to party..."
+      }
+    >
       <div
         style={{
           height: "100vh",
@@ -85,27 +93,40 @@ const BorrelPage = () => {
         >
           <div
             style={{
-              padding: "0 5%",
+              padding: "0 5% 1.2rem",
               width: "100%",
               background:
                 "linear-gradient(to top, rgba(0,0,0,.8), rgba(0,0,0,0))",
             }}
           >
-            <Rainbow
-              colors={[
-                "#6f9af2",
-                "#1479b8",
-                "#1218c4",
-                "#aec5f2",
-                "#558bf6",
-                "#375FAA",
-              ]}
-            />
-            <div style={{ padding: "1.2rem 0 2.6rem" }}>
-              <CurrentTrack
-                currentTrack={playedHistory?.[playedHistory.length - 1]}
-              />
+            <div
+              style={{
+                padding: "1.2rem 0",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "flex-end",
+                gap: "48px",
+              }}
+            >
+              <div>
+                <CurrentTrack
+                  currentTrack={playedHistory?.[playedHistory.length - 1]}
+                />
+              </div>
+
+              <GradientLogo />
             </div>
+            {/* <Rainbow
+              colors={[
+                "#ff5400",
+                "#ff8500",
+                "#ff9e00",
+                "#00b4d8",
+                "#0077b6",
+                "#03045e",
+              ]}
+              thiccness="8px"
+            /> */}
           </div>
           <Ticker history={playedHistory} />
         </div>

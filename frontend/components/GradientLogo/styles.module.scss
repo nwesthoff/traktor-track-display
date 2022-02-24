@@ -1,0 +1,19 @@
+#logoClip {
+  --gradient-logo-scale: 1.5;
+  position: relative;
+  width: calc(160px / var(--gradient-logo-scale));
+  height: calc(170px / var(--gradient-logo-scale));
+}
+
+#gradientCanvas {
+  display: block;
+  clip-path: url(#svgClip);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  --gradient-color-1: #ff5400;
+  --gradient-color-2: #00b4d8;
+  --gradient-color-3: #ff8500;
+  --gradient-color-4: #03045e;
+}

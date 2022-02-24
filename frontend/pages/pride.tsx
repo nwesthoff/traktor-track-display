@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import Ticker from "../components/Ticker";
 import CurrentTrack from "../components/CurrentTrack";
 import Rainbow from "../components/Rainbow";
+import Logo from "../components/Logo";
 
 const deckChannelMap = {
   1: "A",
@@ -66,6 +67,7 @@ const IndexPage = () => {
 
   return (
     <Layout title={"Playing: " + history?.[history.length - 1]?.title}>
+      <Logo />
       <div
         style={{
           height: "100vh",

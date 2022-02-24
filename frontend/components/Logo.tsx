@@ -1,10 +1,10 @@
-import React, { ReactElement } from "react";
+import React, { HTMLAttributes, ReactElement } from "react";
 import Image from "next/image";
 import svgLogo from "../public/assets/logo-ampersand.svg";
 
-interface Props {}
-
-export default function Logo({}: Props): ReactElement {
+export default function Logo({
+  ...props
+}: HTMLAttributes<HTMLDivElement>): ReactElement {
   return (
     <div
       style={{
@@ -14,6 +14,7 @@ export default function Logo({}: Props): ReactElement {
         left: "5%",
         width: "80px",
       }}
+      {...props}
     >
       <Image layout="responsive" src={svgLogo} />
     </div>

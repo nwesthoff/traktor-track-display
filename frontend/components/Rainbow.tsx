@@ -31,10 +31,12 @@ class RainbowPiece {
 
 interface Props {
   colors?: string[];
+  thiccness?: string;
 }
 
 export default function Rainbow({
   colors = ["#DB3938", "#EA9840", "#F6EF55", "#579752", "#375FAA", "#623174"],
+  thiccness = "16px",
 }: Props): ReactElement {
   const ref = useRef<HTMLCanvasElement>(null);
 
@@ -86,7 +88,7 @@ export default function Rainbow({
     <canvas
       style={{
         width: "100%",
-        height: "16px",
+        height: thiccness,
       }}
       ref={ref}
     />
