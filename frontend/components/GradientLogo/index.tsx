@@ -21,8 +21,12 @@ export default function GradientLogo() {
         </clipPath>
       </svg>
 
-      <div id={styles.logoClip}>
-        <canvas ref={canvasRef} id={styles.gradientCanvas} />
+      <div className={styles.logoClip}>
+        <canvas ref={canvasRef} className={styles.gradientCanvas} />
+        <img
+          src="/assets/stroked-ampersand.svg"
+          className={styles.strokedLogo}
+        />
       </div>
     </>
   );

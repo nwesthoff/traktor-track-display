@@ -116,17 +116,6 @@ const BorrelPage = () => {
 
               <GradientLogo />
             </div>
-            {/* <Rainbow
-              colors={[
-                "#ff5400",
-                "#ff8500",
-                "#ff9e00",
-                "#00b4d8",
-                "#0077b6",
-                "#03045e",
-              ]}
-              thiccness="8px"
-            /> */}
           </div>
           <Ticker history={playedHistory} />
         </div>

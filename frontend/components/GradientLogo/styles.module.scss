@@ -1,11 +1,11 @@
-#logoClip {
-  --gradient-logo-scale: 1.5;
+.logoClip {
+  --gradient-logo-scale: 1.3;
   position: relative;
   width: calc(160px / var(--gradient-logo-scale));
-  height: calc(170px / var(--gradient-logo-scale));
+  height: calc(160px / var(--gradient-logo-scale));
 }
 
-#gradientCanvas {
+.gradientCanvas {
   display: block;
   clip-path: url(#svgClip);
   position: absolute;
@@ -13,7 +13,17 @@
   height: 100%;
 
   --gradient-color-1: #ff5400;
-  --gradient-color-2: #00b4d8;
-  --gradient-color-3: #ff8500;
-  --gradient-color-4: #03045e;
+  --gradient-color-2: #ff8500;
+  --gradient-color-3: #0c30ff;
+  --gradient-color-4: #2f26dd;
+}
+
+.strokedLogo {
+  z-index: 1;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-left: -3px;
+  opacity: 0.8;
+  mix-blend-mode: soft-light;
 }
